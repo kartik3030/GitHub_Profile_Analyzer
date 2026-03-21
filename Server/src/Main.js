@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Path of dist folder
-const distPath = path.resolve(__dirname, "../../Client/dist");
-
+// const distPath = path.resolve(__dirname, "../../Client/dist");
+const distPath = path.join(process.cwd(), "Client", "dist");
 // Groq client
 const client = new Groq({
     apiKey: process.env.GROQ_API_KEY,
