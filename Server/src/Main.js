@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Path of dist folder
-// const distPath = path.resolve(__dirname, "../../Client/dist");
-const distPath = path.join(process.cwd(), "Client", "dist");
+const distPath = path.resolve(__dirname, "../../Client/dist");
+
 // Groq client
 const client = new Groq({
     apiKey: process.env.GROQ_API_KEY,
@@ -67,6 +67,8 @@ app.get("/user/:username", async (req, res) => {
             return res.status(400).json({ error: "Invalid username" });
         }
 
+
+        // https://api.github.com/users/${username}         github openAPI
         const [userRes, repoRes] = await Promise.all([
             fetch(`https://api.github.com/users/${username}`, { headers: githubHeaders }),
             fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=stars`, { headers: githubHeaders }),
@@ -130,6 +132,7 @@ ${JSON.stringify(
         )}
 `;
 
+        // grok 
         const completion = await client.chat.completions.create({
             model: "llama-3.3-70b-versatile",
             messages: [

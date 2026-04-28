@@ -1,12 +1,18 @@
-import React from 'react'
-import Landing from './Pages/Landing'
+import React, { useState } from "react";
+import Landing from "./Pages/Landing";
+import AnalysisResult from "./Pages/AnalysisResult";
 
 const App = () => {
-    return (
-        <>
-            <Landing />
-        </>
-    )
-}
+    const [result, setResult] = useState(null);
 
-export default App
+    return result ? (
+        <AnalysisResult
+            result={result}
+            onReset={() => setResult(null)}
+        />
+    ) : (
+        <Landing onAnalyze={setResult} />
+    );
+};
+
+export default App;

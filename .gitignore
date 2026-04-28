@@ -1,31 +1,19 @@
 # dependencies
 node_modules/
 
-# env files (strict)
-.env
-.env.*
-**/.env
-**/.env.*
-
 # build outputs
 dist/
 build/
-Client/dist/
-Server/dist/
+
+# env files
+.env
+.env.*
 
 # logs
-*.log
-logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# OS / system
+# OS
 .DS_Store
 Thumbs.db
-
-# IDE / editor
-.vscode/
-.idea/
-
-# misc
-coverage/
-.cache/
-*.local
